@@ -12,7 +12,7 @@ const UserAuth = () => {
         localStorage.setItem('user', JSON.stringify({ email }));
         setUser({ email });
         setIsLogin(true);
-        history.push('/account');
+        history.push('/home');
         res({ email });
       }, 1000);
     });

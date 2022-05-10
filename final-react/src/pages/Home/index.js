@@ -1,34 +1,27 @@
-import BreadcrumbCP from '../../components/layouts/Breadcrumb';
-import SiteBarCP from '../../components/layouts/SiteBar';
+import { Layout } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
+import { Route, Switch } from 'react-router-dom';
 import FooterCP from '../../components/layouts/Footer';
 import HeaderCP from '../../components/layouts/Header';
-import { Content } from 'antd/lib/layout/layout';
-import { Layout } from 'antd';
+import SiteBarCP from '../../components/layouts/SiteBar';
+import ProductsList from '../ProductList';
 import 'antd/dist/antd.css';
+import AddProduct from '../AddProduct';
 
 
 
 function Home() {
   return (
-    <Layout>
+    <Layout className='home'>
       <HeaderCP />
       <Layout className='home-main'>
         <SiteBarCP />
-        <Layout
-          style={{
-            padding: '0 24px 24px',
-          }}
-        >
-          <BreadcrumbCP />
-          <Content
-            className="site-layout-background"
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-            }}
-          >
-            Content
+        <Layout className='home-content'>
+          <Content className="site-layout-background">
+            <Switch>
+              <Route path='/home/add'><AddProduct /></Route>
+              <Route path='/home'><ProductsList /></Route>
+            </Switch>
           </Content>
         </Layout>
       </Layout>

@@ -1,5 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import UserAuth from "../../../hooks/UserAuth";
+import UserAuth from "../../../hooks/useAuth";
 
 export default function PrivateRoute({ children, ...rest }) {
   let { isLogin } = UserAuth();

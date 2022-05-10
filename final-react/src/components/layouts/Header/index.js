@@ -1,17 +1,34 @@
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
-
+import { LoginOutlined, UserOutlined } from '@ant-design/icons';
+import UserAuth from '../../../hooks/useAuth';
 const { Header } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
 
 export default function HeaderCP() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const { logout } = UserAuth();
+
+  function getItem(label, key, icon, onClick, children, type) {
+    return {
+      key,
+      icon,
+      onClick,
+      children,
+      label,
+      type,
+    };
+  }
+  const items = [
+    getItem(user.email, 'account', <UserOutlined />),
+    getItem("Logout", 'logout', <LoginOutlined />, () => logout()),
+  ];
+
   return (
     <Header className="header">
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+      <div className="logo">
+      </div>
+      <Menu key="menu-header" theme="dark" className="header-actions" items={items}>
+      </Menu>
     </Header>
   )
 }
