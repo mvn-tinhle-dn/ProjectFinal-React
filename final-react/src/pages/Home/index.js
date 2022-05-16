@@ -5,10 +5,8 @@ import FooterCP from '../../components/layouts/Footer';
 import HeaderCP from '../../components/layouts/Header';
 import SiteBarCP from '../../components/layouts/SiteBar';
 import ProductsList from '../ProductList';
-import 'antd/dist/antd.css';
 import AddProduct from '../AddProduct';
-
-
+import Account from '../Account';
 
 function Home() {
   return (
@@ -20,6 +18,7 @@ function Home() {
           <Content className="site-layout-background">
             <Switch>
               <Route path='/home/add'><AddProduct /></Route>
+              <Route path='/home/account'><Account /></Route>
               <Route path='/home'><ProductsList /></Route>
             </Switch>
           </Content>

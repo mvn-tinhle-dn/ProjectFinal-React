@@ -1,9 +1,34 @@
-import { Form, Input, Button, Checkbox } from 'antd';
-import UserAuth from '../../../hooks/useAuth';
+import { Form, Input, Button, Checkbox } from "antd";
+import openNotificationWithIcon from "../../../components/animations";
+import UserAuth from "../../../hooks/useAuth";
 
 export default function Login() {
+  localStorage.setItem("products", JSON.stringify([]));
+  const arrType = [
+    {
+      id: 1,
+      type: "Oxi & Lọc Nuớc",
+    },
+    {
+      id: 2,
+      type: "Đèn",
+    },
+    {
+      id: 3,
+      type: "Tiểu Cảnh",
+    },
+    {
+      id: 4,
+      type: "Thức ăn cá",
+    },
+    {
+      id: 5,
+      type: "Phân Nền",
+    },
+  ];
 
-  localStorage.setItem("products",JSON.stringify([]));
+  localStorage.setItem("typeProds", JSON.stringify(arrType));
+
   const { login } = UserAuth();
   const data = [
     {
@@ -18,7 +43,6 @@ export default function Login() {
       email: "toan@123.com",
       password: "Toan123",
     },
-
   ];
 
   const handleOnSubmit = (values) => {
@@ -27,18 +51,19 @@ export default function Login() {
     });
 
     if (findInfo === undefined) {
-      alert("Email or Password does not exist!");
+      openNotificationWithIcon("warning", "Email or Password does not exist!");
       return;
     } else {
-      alert("Logged in successfully")
+      openNotificationWithIcon("success", "Logged in successfully!");
       login(values.email, values.password);
     }
   };
+
   return (
-    <div className='container'>
+    <div className="container">
       <Form
         name="basic"
-        className='form-login'
+        className="form-login"
         labelCol={{
           span: 8,
         }}
@@ -56,9 +81,9 @@ export default function Login() {
           name="email"
           rules={[
             {
-              type: 'email',
+              type: "email",
               required: true,
-              message: 'Please input your email!',
+              message: "Please input your email!",
             },
           ]}
         >
@@ -71,7 +96,7 @@ export default function Login() {
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Please input your password!",
             },
           ]}
         >

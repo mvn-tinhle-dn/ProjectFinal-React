@@ -1,11 +1,10 @@
-import {
-  AlignLeftOutlined, AppstoreOutlined, PlusSquareOutlined
-} from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
-import "antd/dist/antd.css";
+import {
+  AlignLeftOutlined, PlusSquareOutlined, UserOutlined
+} from "@ant-design/icons";
 import Sider from "antd/lib/layout/Sider";
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 export default function SiteBarCP() {
   function getItem(label, key, icon, children, type) {
@@ -16,21 +15,22 @@ export default function SiteBarCP() {
       label,
       type,
     };
-  }
+  };
+
   const items = [
     getItem(<NavLink to="/home">Products List</NavLink>, 'product', <AlignLeftOutlined />),
-    getItem('Actions', 'actions', <AppstoreOutlined />, [
-      getItem(<NavLink to="/home/add">Add Product</NavLink>, 'actions-item',<PlusSquareOutlined />),
-    ]),
+    getItem(<NavLink to="/home/add">Add Product</NavLink>, 'add', <PlusSquareOutlined />),
+    getItem(<NavLink to="/home/account">Account</NavLink>, 'account', <UserOutlined />),
   ];
 
   return (
-    <Sider width={200} className="site-layout-background">
+    <Sider className="site-layout-background">
       <Menu
         mode="inline"
         theme="dark"
         defaultSelectedKeys={["product"]}
-        defaultOpenKeys={["product"]}
+        // defaultOpenKeys={["product"]}
+        // selectedKeys={items}
         className="menu-site-bar"
         items={items}
       />
