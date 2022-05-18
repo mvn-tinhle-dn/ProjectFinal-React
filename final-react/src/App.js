@@ -12,12 +12,12 @@ function App() {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <PrivateRoute path="/home">
-            <Home />
-          </PrivateRoute>
-          <Route path="/">
+          <Route path="/auth">
             <Auth />
           </Route>
+          <PrivateRoute path="/">
+            <Home />
+          </PrivateRoute>
         </Switch>
       </Suspense>
     </Router>
