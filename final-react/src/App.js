@@ -1,13 +1,11 @@
-import './assets/scss/styles.scss';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
 import { Suspense } from 'react';
-import Home from './pages/Home';
+import {
+  BrowserRouter as Router, Route, Switch
+} from "react-router-dom";
+import './assets/scss/styles.scss';
 import PrivateRoute from './core/guards/PrivateRoute';
 import Auth from './pages/Auth';
+import Home from './pages/Home';
 
 function App() {
   return (
