@@ -8,8 +8,8 @@ export default function EditProduct() {
   let history = useHistory();
   const [products] = useState(JSON.parse(localStorage.getItem("products")));
   const currItem = products.find((item) => item.id.toString() === id);
-
   const arrEdit = products;
+  //Update
   function onFinish(values, url) {
     if (values.name === "" || values.price === "" || values.num === null) {
       openNotificationWithIcon("warning", " Miss Prams");
@@ -29,6 +29,7 @@ export default function EditProduct() {
       history.push("/products");
     }
   }
+
   return (
     <div className="edit">
       <h1 className="title-page">Edit</h1>

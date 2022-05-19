@@ -23,6 +23,7 @@ export default function FormProd({ onFinish, currItem, required, nameForm }) {
   };
   const [url, setUrl] = useState(currItem ? currItem.url : "");
   const arrType = JSON.parse(localStorage.getItem("typeProds"));
+  //get image
   const onChange = (e) => {
     let files = e.target.files;
     if (files[0].size < 1000000) {

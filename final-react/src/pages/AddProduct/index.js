@@ -4,7 +4,7 @@ import FormProd from "../../components/modules/FromProd";
 
 export default function AddProduct() {
   const arrPros = JSON.parse(localStorage.getItem("products"));
-
+  //add
   const onFinish = (values, url) => {
     const id = Math.floor(Math.random() * 1000);
     arrPros.unshift({ ...values, id, url });
